@@ -29,3 +29,11 @@ REST API. Make it possible to perform all user actions via the API, including au
 In any case, you should be able to explain how a REST API works and demonstrate that by creating
 functional tests that use the REST Layer directly. Please be prepared to use REST clients like Postman,
 cURL, etc. for this purpose.
+
+This project uses:
+ - Doobie
+ - Cats
+ - Circe
+ - http4s
+ - cornichon for testing
+ - scala meta for testing
