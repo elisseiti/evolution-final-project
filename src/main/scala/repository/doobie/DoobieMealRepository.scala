@@ -1,107 +1,63 @@
-//package repository.doobie
-//
-//import cats.data._
-//import cats.syntax.all._
-//import doobie._
-//import doobie.implicits._
-//import SQLPagination._
-//
-//private object PetSQL {
-//  /* We require type StatusMeta to handle our ADT Status */
-//  implicit val StatusMeta: Meta[PetStatus] =
-//    Meta[String].imap(PetStatus.withName)(_.entryName)
-//
-//  /* This is used to marshal our sets of strings */
-//  implicit val SetStringMeta: Meta[Set[String]] =
-//    Meta[String].imap(_.split(',').toSet)(_.mkString(","))
-//
-//  def insert(pet: Pet): Update0 = sql"""
-//    INSERT INTO PET (NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS)
-//    VALUES (${pet.name}, ${pet.category}, ${pet.bio}, ${pet.status}, ${pet.tags}, ${pet.photoUrls})
-//  """.update
-//
-//  def update(pet: Pet, id: Long): Update0 = sql"""
-//    UPDATE PET
-//    SET NAME = ${pet.name}, BIO = ${pet.bio}, STATUS = ${pet.status}, TAGS = ${pet.tags}, PHOTO_URLS = ${pet.photoUrls}
-//    WHERE id = $id
-//  """.update
-//
-//  def select(id: Long): Query0[Pet] = sql"""
-//    SELECT NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS, ID
-//    FROM PET
-//    WHERE ID = $id
-//  """.query
-//
-//  def delete(id: Long): Update0 = sql"""
-//    DELETE FROM PET WHERE ID = $id
-//  """.update
-//
-//  def selectByNameAndCategory(name: String, category: String): Query0[Pet] = sql"""
-//    SELECT NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS, ID
-//    FROM PET
-//    WHERE NAME = $name AND CATEGORY = $category
-//  """.query[Pet]
-//
-//  def selectAll: Query0[Pet] = sql"""
-//    SELECT NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS, ID
-//    FROM PET
-//    ORDER BY NAME
-//  """.query
-//
-//  def selectByStatus(statuses: NonEmptyList[PetStatus]): Query0[Pet] =
-//    (
-//      sql"""
-//      SELECT NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS, ID
-//      FROM PET
-//      WHERE """ ++ Fragments.in(fr"STATUS", statuses)
-//    ).query
-//
-//  def selectTagLikeString(tags: NonEmptyList[String]): Query0[Pet] = {
-//    /* Handle dynamic construction of query based on multiple parameters */
-//
-//    /* To piggyback off of comment of above reference about tags implementation, findByTag uses LIKE for partial matching
-//    since tags is (currently) implemented as a comma-delimited string */
-//    val tagLikeString: String = tags.toList.mkString("TAGS LIKE '%", "%' OR TAGS LIKE '%", "%'")
-//    (sql"""SELECT NAME, CATEGORY, BIO, STATUS, TAGS, PHOTO_URLS, ID
-//         FROM PET
-//         WHERE """ ++ Fragment.const(tagLikeString))
-//      .query[Pet]
-//  }
-//}
-//
-//class DoobiePetRepositoryInterpreter[F[_]: Bracket[*[_], Throwable]](val xa: Transactor[F])
-//    extends PetRepositoryAlgebra[F] {
-//  import PetSQL._
-//
-//  def create(pet: Pet): F[Pet] =
-//    insert(pet).withUniqueGeneratedKeys[Long]("ID").map(id => pet.copy(id = id.some)).transact(xa)
-//
-//  def update(pet: Pet): F[Option[Pet]] =
-//    OptionT
-//      .fromOption[ConnectionIO](pet.id)
-//      .semiflatMap(id => PetSQL.update(pet, id).run.as(pet))
-//      .value
-//      .transact(xa)
-//
-//  def get(id: Long): F[Option[Pet]] = select(id).option.transact(xa)
-//
-//  def delete(id: Long): F[Option[Pet]] =
-//    OptionT(select(id).option).semiflatMap(pet => PetSQL.delete(id).run.as(pet)).value.transact(xa)
-//
-//  def findByNameAndCategory(name: String, category: String): F[Set[Pet]] =
-//    selectByNameAndCategory(name, category).to[List].transact(xa).map(_.toSet)
-//
-//  def list(pageSize: Int, offset: Int): F[List[Pet]] =
-//    paginate(pageSize, offset)(selectAll).to[List].transact(xa)
-//
-//  def findByStatus(statuses: NonEmptyList[PetStatus]): F[List[Pet]] =
-//    selectByStatus(statuses).to[List].transact(xa)
-//
-//  def findByTag(tags: NonEmptyList[String]): F[List[Pet]] =
-//    selectTagLikeString(tags).to[List].transact(xa)
-//}
-//
-//object DoobieMealRepository {
-//  def apply[F[_]: Bracket[*[_], Throwable]](xa: Transactor[F]): DoobiePetRepositoryInterpreter[F] =
-//    new DoobiePetRepositoryInterpreter(xa)
-//}
+package repository.doobie
+
+import algebras.MealRepositoryAlgebra
+import cats.data.OptionT
+import cats.effect.Sync
+import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
+import domain.entity.Meal
+import doobie._
+import doobie.implicits._
+private object MealSQL {
+  /* We require type StatusMeta to handle our ADT Status */
+
+  /* This is used to marshal our sets of strings */
+  implicit val SetStringMeta: Meta[Set[String]] =
+    Meta[String].imap(_.split(',').toSet)(_.mkString(","))
+
+  def insert(meal: Meal): Update0 = sql"""
+    INSERT INTO MEAL (NAME, DESCRIPTION, PRICE, RESTAURANT_ID)
+    VALUES (${meal.name}, ${meal.description}, ${meal.price}, ${meal.restaurantId})
+  """.update
+
+  def update(meal: Meal, id: Long): Update0 = sql"""
+    UPDATE MEAL
+    SET NAME = ${meal.name}, DESCRIPTION = ${meal.description}, PRICE = ${meal.price}, RESTAURANT_ID = ${meal.restaurantId}
+    WHERE id = ${id}
+  """.update
+
+  def select(id: Long): Query0[Meal] = sql"""
+    SELECT ID,NAME, DESCRIPTION, PRICE, RESTAURANT_ID
+    FROM MEAL
+    WHERE ID = $id
+  """.query
+
+  def delete(id: Long): Update0 = sql"""
+    DELETE FROM MEAL WHERE ID = $id
+  """.update
+
+}
+
+class DoobieMealRepository[F[_]: Sync](xa: Transactor[F]) extends MealRepositoryAlgebra[F] {
+  override def create(meal: Meal): F[Meal] = MealSQL
+    .insert(meal)
+    .withUniqueGeneratedKeys[Long]("ID")
+    .map(id => meal.copy(id = id.some))
+    .transact(xa);
+
+  override def update(meal: Meal): F[Option[Meal]] = OptionT
+    .fromOption[ConnectionIO](meal.id)
+    .semiflatMap(id => MealSQL.update(meal,id).run.as(meal))
+    .value
+    .transact(xa)
+
+  override def get(id: Long): F[Option[Meal]] = MealSQL.select(id).option.transact(xa)
+
+  override def delete(id: Long): F[Option[Meal]] = OptionT(get(id))
+    .semiflatMap(order => MealSQL.delete(id).run.transact(xa).as(order))
+    .value
+}
+
+object DoobieMealRepository {
+  def apply[F[_]: Sync](xa: Transactor[F]): DoobieMealRepository[F] =
+    new DoobieMealRepository(xa)
+}

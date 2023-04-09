@@ -2,12 +2,12 @@
 //
 //import algebras.OrderRepositoryAlgebra
 //import cats.data.OptionT
+//import cats.effect.Sync
 //import cats.syntax.all._
 //import domain.entity.OrderStatus.OrderStatus
 //import domain.entity.{OrderStatus, Orders, OrdersWithId}
 //import doobie._
 //import doobie.implicits._
-//import jdk.internal.org.jline.reader.impl.DefaultParser.Bracket
 //
 //private object OrderSQL {
 //  /* We require type StatusMeta to handle our ADT Status */
@@ -31,7 +31,7 @@
 //  """.update
 //}
 //
-//class DoobieOrderRepository[F[_]: Bracket[*[_], Throwable]](val xa: Transactor[F])
+//class DoobieOrderRepository[F[_]: Sync](val xa: Transactor[F])
 //    extends OrderRepositoryAlgebra[F] {
 //  import OrderSQL._
 //
@@ -50,9 +50,9 @@
 //      .value
 //}
 //
-//object DoobieOrderRepository {
-//  def apply[F[_]: Bracket[*[_], Throwable]](
-//      xa: Transactor[F],
-//  ): DoobieOrderRepository[F] =
-//    new DoobieOrderRepository(xa)
+//object DoobieMealRepository {
+//  def apply[F[_]: Sync](
+//                         xa: Transactor[F],
+//                       ): DoobieMealRepository[F] =
+//    new DoobieMealRepository(xa)
 //}

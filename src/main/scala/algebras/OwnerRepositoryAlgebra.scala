@@ -1,13 +1,13 @@
 package algebras
 
-import domain.entity.{Owner,OwnerWithId}
+import domain.entity.Owner
 
 trait OwnerRepositoryAlgebra[F[_]] {
-  def create(owner: Owner): F[OwnerWithId]
+  def create(owner: Owner): F[Owner]
 
-  def update(owner: OwnerWithId): F[Option[OwnerWithId]]
+  def update(owner: Owner): F[Option[Owner]]
 
-  def get(id: Long): F[Option[OwnerWithId]]
+  def get(id: Long): F[Option[Owner]]
 
-  def delete(id: Long): F[Option[OwnerWithId]]
+  def delete(id: Long): F[Option[Owner]]
 }

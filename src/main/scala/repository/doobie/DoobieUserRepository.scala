@@ -1,84 +1,64 @@
-//package repository.doobie
-//
-//import cats.data.OptionT
-//import cats.effect.Bracket
-//import cats.syntax.all._
-//import doobie._
-//import doobie.implicits._
-//import io.circe.parser.decode
-//import io.circe.syntax._
-//import domain.users.{Role, User, UserRepositoryAlgebra}
-//import io.github.pauljamescleary.petstore.infrastructure.repository.doobie.SQLPagination._
-//import tsec.authentication.IdentityStore
-//
-//private object UserSQL {
-//  // H2 does not support JSON data type.
-//  implicit val roleMeta: Meta[Role] =
-//    Meta[String].imap(decode[Role](_).leftMap(throw _).merge)(_.asJson.toString)
-//
-//  def insert(user: User): Update0 = sql"""
-//    INSERT INTO USERS (USER_NAME, FIRST_NAME, LAST_NAME, EMAIL, HASH, PHONE, ROLE)
-//    VALUES (${user.userName}, ${user.firstName}, ${user.lastName}, ${user.email}, ${user.hash}, ${user.phone}, ${user.role})
-//  """.update
-//
-//  def update(user: User, id: Long): Update0 = sql"""
-//    UPDATE USERS
-//    SET FIRST_NAME = ${user.firstName}, LAST_NAME = ${user.lastName},
-//        EMAIL = ${user.email}, HASH = ${user.hash}, PHONE = ${user.phone}, ROLE = ${user.role}
-//    WHERE ID = $id
-//  """.update
-//
-//  def select(userId: Long): Query0[User] = sql"""
-//    SELECT USER_NAME, FIRST_NAME, LAST_NAME, EMAIL, HASH, PHONE, ID, ROLE
-//    FROM USERS
-//    WHERE ID = $userId
-//  """.query
-//
-//  def byUserName(userName: String): Query0[User] = sql"""
-//    SELECT USER_NAME, FIRST_NAME, LAST_NAME, EMAIL, HASH, PHONE, ID, ROLE
-//    FROM USERS
-//    WHERE USER_NAME = $userName
-//  """.query[User]
-//
-//  def delete(userId: Long): Update0 = sql"""
-//    DELETE FROM USERS WHERE ID = $userId
-//  """.update
-//
-//  val selectAll: Query0[User] = sql"""
-//    SELECT USER_NAME, FIRST_NAME, LAST_NAME, EMAIL, HASH, PHONE, ID, ROLE
-//    FROM USERS
-//  """.query
-//}
-//
-//class DoobieUserRepositoryInterpreter[F[_]: Bracket[*[_], Throwable]](val xa: Transactor[F])
-//    extends UserRepositoryAlgebra[F]
-//    with IdentityStore[F, Long, User] { self =>
-//  import UserSQL._
-//
-//  def create(user: User): F[User] =
-//    insert(user).withUniqueGeneratedKeys[Long]("ID").map(id => user.copy(id = id.some)).transact(xa)
-//
-//  def update(user: User): OptionT[F, User] =
-//    OptionT.fromOption[F](user.id).semiflatMap { id =>
-//      UserSQL.update(user, id).run.transact(xa).as(user)
-//    }
-//
-//  def get(userId: Long): OptionT[F, User] = OptionT(select(userId).option.transact(xa))
-//
-//  def findByUserName(userName: String): OptionT[F, User] =
-//    OptionT(byUserName(userName).option.transact(xa))
-//
-//  def delete(userId: Long): OptionT[F, User] =
-//    get(userId).semiflatMap(user => UserSQL.delete(userId).run.transact(xa).as(user))
-//
-//  def deleteByUserName(userName: String): OptionT[F, User] =
-//    findByUserName(userName).mapFilter(_.id).flatMap(delete)
-//
-//  def list(pageSize: Int, offset: Int): F[List[User]] =
-//    paginate(pageSize, offset)(selectAll).to[List].transact(xa)
-//}
-//
-//object DoobieUserRepository {
-//  def apply[F[_]: Bracket[*[_], Throwable]](xa: Transactor[F]): DoobieUserRepositoryInterpreter[F] =
-//    new DoobieUserRepositoryInterpreter(xa)
-//}
+package repository.doobie
+
+import algebras.UsersRepositoryAlgebra
+import cats.data.OptionT
+import cats.effect.Sync
+import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
+import domain.entity.RegularUser
+import doobie._
+import doobie.implicits._
+
+private object UserSQL {
+
+  def insert(user: RegularUser): Update0 = sql"""
+    INSERT INTO USERS (USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER)
+    VALUES (${user.username}, ${user.name}, ${user.surname},${user.birthday}, ${user.email}, ${user.password}, ${user.gender})
+  """.update
+
+  def update(user: RegularUser, id: Long): Update0 = sql"""
+    UPDATE USERS
+    SET USERNAME = ${user.username}, NAME = ${user.name}, SURNAME = ${user.surname}, BIRTHDAY = ${user.birthday},
+        EMAIL = ${user.email}, PASSWORD = ${user.password}, GENDER = ${user.gender}
+    WHERE ID = $id
+  """.update
+
+  def select(userId: Long): Query0[RegularUser] = sql"""
+    SELECT ID, USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER
+    FROM USERS
+    WHERE ID = $userId
+  """.query
+
+
+
+  def delete(userId: Long): Update0 = sql"""
+    DELETE FROM USERS WHERE ID = $userId
+  """.update
+
+}
+
+class DoobieUserRepository[F[_]: Sync](val xa: Transactor[F])  extends UsersRepositoryAlgebra[F] {
+  override def create(user: RegularUser): F[RegularUser] = UserSQL
+    .insert(user)
+    .withUniqueGeneratedKeys[Long]("ID")
+    .map(id => user.copy(id = id.some))
+    .transact(xa);
+
+  override def update(user: RegularUser): F[Option[RegularUser]] = OptionT
+    .fromOption[ConnectionIO](user.id)
+    .semiflatMap(id => UserSQL.update(user,id).run.as(user))
+    .value
+    .transact(xa)
+
+  override def get(id: Long): F[Option[RegularUser]] = UserSQL.select(id).option.transact(xa)
+
+  override def delete(id: Long): F[Option[RegularUser]] = OptionT(get(id))
+    .semiflatMap(order => UserSQL.delete(id).run.transact(xa).as(order))
+    .value
+}
+
+object DoobieUserRepository {
+  def apply[F[_]: Sync](
+                         xa: Transactor[F],
+                       ): DoobieUserRepository[F] =
+    new DoobieUserRepository(xa)
+}
