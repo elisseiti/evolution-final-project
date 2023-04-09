@@ -2,17 +2,19 @@ package repository.doobie
 
 import algebras.UsersRepositoryAlgebra
 import cats.data.OptionT
-import cats.effect.Sync
-import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
+import cats.effect._
+import cats.implicits._
 import domain.entity.RegularUser
 import doobie._
 import doobie.implicits._
+
+// Very important to deal with arrays
 
 private object UserSQL {
 
   def insert(user: RegularUser): Update0 = sql"""
     INSERT INTO USERS (USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER)
-    VALUES (${user.username}, ${user.name}, ${user.surname},${user.birthday}, ${user.email}, ${user.password}, ${user.gender})
+    VALUES (${user.username}, ${user.name}, ${user.surname}, ${user.birthday}, ${user.email}, ${user.password}, ${user.gender})
   """.update
 
   def update(user: RegularUser, id: Long): Update0 = sql"""
@@ -26,7 +28,7 @@ private object UserSQL {
     SELECT ID, USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER
     FROM USERS
     WHERE ID = $userId
-  """.query
+  """.query[RegularUser]
 
 
 
@@ -41,7 +43,7 @@ class DoobieUserRepository[F[_]: Sync](val xa: Transactor[F])  extends UsersRepo
     .insert(user)
     .withUniqueGeneratedKeys[Long]("ID")
     .map(id => user.copy(id = id.some))
-    .transact(xa);
+    .transact(xa)
 
   override def update(user: RegularUser): F[Option[RegularUser]] = OptionT
     .fromOption[ConnectionIO](user.id)
