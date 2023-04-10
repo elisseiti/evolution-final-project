@@ -9,5 +9,5 @@ trait RestaurantRepositoryAlgebra[F[_]] {
 
   def delete(restaurantId: Long): F[Option[Restaurant]]
 
-  def update(restaurant: Restaurant): F[Restaurant]
+  def update(restaurant: Restaurant): F[Option[Restaurant]]
 }

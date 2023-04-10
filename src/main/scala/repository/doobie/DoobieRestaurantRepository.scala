@@ -1,55 +1,65 @@
-//package repository.doobie
-//
-//import cats.data.OptionT
-//import cats.syntax.all._
-//import domain.entity.OrderStatus.OrderStatus
-//import doobie._
-//import doobie.implicits._
-//
-//private object OrderSQL {
-//  /* We require type StatusMeta to handle our ADT Status */
-//  implicit val status: Meta[OrderStatus] =
-//    Meta[String].imap(OrderStatus.withName)(_.entryName)
-//
-//  def select(orderId: Long): Query0[Order] = sql"""
-//    SELECT PET_ID, SHIP_DATE, STATUS, COMPLETE, ID, USER_ID
-//    FROM ORDERS
-//    WHERE ID = $orderId
-//  """.query[Order]
-//
-//  def insert(order: Order): Update0 = sql"""
-//    INSERT INTO ORDERS (PET_ID, SHIP_DATE, STATUS, COMPLETE, USER_ID)
-//    VALUES (${order.petId}, ${order.shipDate}, ${order.status}, ${order.complete}, ${order.userId.get})
-//  """.update
-//
-//  def delete(orderId: Long): Update0 = sql"""
-//    DELETE FROM ORDERS
-//    WHERE ID = $orderId
-//  """.update
-//}
-//
-//class DoobieOrderRepository[F[_]: Bracket[*[_], Throwable]](val xa: Transactor[F])
-//  extends OrderRepositoryAlgebra[F] {
-//  import OrderSQL._
-//
-//  def create(order: Order): F[Order] =
-//    insert(order)
-//      .withUniqueGeneratedKeys[Long]("ID")
-//      .map(id => order.copy(id = id.some))
-//      .transact(xa)
-//
-//  def get(orderId: Long): F[Option[Order]] =
-//    OrderSQL.select(orderId).option.transact(xa)
-//
-//  def delete(orderId: Long): F[Option[Order]] =
-//    OptionT(get(orderId))
-//      .semiflatMap(order => OrderSQL.delete(orderId).run.transact(xa).as(order))
-//      .value
-//}
-//
-//object DoobieOrderRepository {
-//  def apply[F[_]: Bracket[*[_], Throwable]](
-//                                             xa: Transactor[F],
-//                                           ): DoobieOrderRepositoryInterpreter[F] =
-//    new DoobieOrderRepositoryInterpreter(xa)
-//}
+package repository.doobie
+
+import algebras.RestaurantRepositoryAlgebra
+import cats.data.OptionT
+import cats.effect.Sync
+import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
+import domain.entity.Restaurant
+import doobie._
+import doobie.implicits._
+private object RestaurantSQL {
+  /* We require type StatusMeta to handle our ADT Status */
+
+  /* This is used to marshal our sets of strings */
+  implicit val SetStringMeta: Meta[Set[String]] =
+    Meta[String].imap(_.split(',').toSet)(_.mkString(","))
+
+  def insert(restaurant: Restaurant): Update0 = sql"""
+    INSERT INTO RESTAURANT (NAME, DESCRIPTION, OWNER_ID)
+    VALUES (${restaurant.name}, ${restaurant.description}, ${restaurant.ownerId})
+  """.update
+
+  def update(restaurant: Restaurant, id: Long): Update0 = sql"""
+    UPDATE RESTAURANT
+    SET NAME = ${restaurant.name}, DESCRIPTION = ${restaurant.description}, OWNER_ID = ${restaurant.ownerId}
+    WHERE id = ${id}
+  """.update
+
+  def select(id: Long): Query0[Restaurant] = sql"""
+    SELECT ID, NAME, DESCRIPTION, OWNER_ID
+    FROM RESTAURANT
+    WHERE ID = $id
+  """.query
+
+  def delete(id: Long): Update0 = sql"""
+    DELETE FROM RESTAURANT WHERE ID = $id
+  """.update
+
+}
+
+class DoobieRestaurantRepository[F[_]: Sync](xa: Transactor[F]) extends RestaurantRepositoryAlgebra[F] {
+  override def create(restaurant: Restaurant): F[Restaurant] = RestaurantSQL
+    .insert(restaurant)
+    .withUniqueGeneratedKeys[Long]("ID")
+    .map(id => restaurant.copy(id = id.some))
+    .transact(xa)
+
+  override def get(restaurantId: Long): F[Option[Restaurant]] = RestaurantSQL.select(restaurantId).option.transact(xa)
+
+  override def delete(restaurantId: Long): F[Option[Restaurant]] = OptionT(get(restaurantId))
+    .semiflatMap(order => RestaurantSQL.delete(restaurantId).run.transact(xa).as(order))
+    .value
+
+  override def update(restaurant: Restaurant): F[Option[Restaurant]] = OptionT
+    .fromOption[ConnectionIO](restaurant.id)
+    .semiflatMap(id => RestaurantSQL.update(restaurant,id).run.as(restaurant))
+    .value
+    .transact(xa)
+
+}
+
+
+object DoobieRestaurantRepository {
+  def apply[F[_]: Sync](xa: Transactor[F]): DoobieRestaurantRepository[F] =
+    new DoobieRestaurantRepository(xa)
+}

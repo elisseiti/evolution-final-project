@@ -3,12 +3,12 @@ package repository.doobie
 import algebras.UsersRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
-import cats.implicits._
+import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
 import domain.entity.RegularUser
 import doobie._
 import doobie.implicits._
 
-// Very important to deal with arrays
+import doobie.postgres.implicits._
 
 private object UserSQL {
 
@@ -19,10 +19,11 @@ private object UserSQL {
 
   def update(user: RegularUser, id: Long): Update0 = sql"""
     UPDATE USERS
-    SET USERNAME = ${user.username}, NAME = ${user.name}, SURNAME = ${user.surname}, BIRTHDAY = ${user.birthday},
+    SET USERNAME = ${user.username}, NAME = ${user.name}, SURNAME = ${user.surname}, BIRTHDAY = $user.birthday,
         EMAIL = ${user.email}, PASSWORD = ${user.password}, GENDER = ${user.gender}
     WHERE ID = $id
   """.update
+
 
   def select(userId: Long): Query0[RegularUser] = sql"""
     SELECT ID, USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER
@@ -54,7 +55,7 @@ class DoobieUserRepository[F[_]: Sync](val xa: Transactor[F])  extends UsersRepo
   override def get(id: Long): F[Option[RegularUser]] = UserSQL.select(id).option.transact(xa)
 
   override def delete(id: Long): F[Option[RegularUser]] = OptionT(get(id))
-    .semiflatMap(order => UserSQL.delete(id).run.transact(xa).as(order))
+    .semiflatMap(user => UserSQL.delete(id).run.transact(xa).as(user))
     .value
 }
 
