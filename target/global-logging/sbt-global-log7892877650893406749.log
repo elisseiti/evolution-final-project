@@ -1,0 +1,14 @@
+[debug] > Exec(compile, None, None)
+[debug] Evaluating tasks: Compile / compile
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 23 Scala sources to C:\Users\User\Downloads\evolution-games\untitled2\target\scala-2.13\classes ...
+[info] C:\Users\User\Downloads\evolution-games\untitled2\src\main\scala\algebras\OrderHistoryRepositoryAlgebra.scala:1:1: 
+[info] Found names but no class, trait or object is defined in the compilation unit.
+[info] The incremental compiler cannot record the dependency information in such case.
+[info] Some errors like unused import referring to a non-existent class might not be reported.
+[info]     
+[info] package algebras
+[info] ^
+[info] done compiling
+[success] Total time: 16 s, completed Apr 10, 2023, 10:49:46 PM
+[debug] > Exec(idea-shell, None, None)

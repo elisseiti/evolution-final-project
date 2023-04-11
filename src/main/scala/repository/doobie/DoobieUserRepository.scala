@@ -4,13 +4,16 @@ import algebras.UsersRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import domain.entity.RegularUser
+import domain.entity.Gender.Gender
+import domain.entity.{Gender, RegularUser}
 import doobie._
 import doobie.implicits._
-
 import doobie.postgres.implicits._
 
 private object UserSQL {
+
+  implicit val StatusMeta: Meta[Gender] =
+    Meta[String].imap(Gender.withName)(_.toString)
 
   def insert(user: RegularUser): Update0 = sql"""
     INSERT INTO USERS (USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER)

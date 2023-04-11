@@ -1,28 +1,24 @@
 //package repository.doobie
 //
 //import algebras.OrderRepositoryAlgebra
-//import cats.data.OptionT
 //import cats.effect.Sync
-//import cats.syntax.all._
-//import domain.entity.OrderStatus.OrderStatus
-//import domain.entity.{OrderStatus, Orders, OrdersWithId}
+//import cats.implicits.catsSyntaxOptionId
+//import domain.entity.Orders
 //import doobie._
 //import doobie.implicits._
 //
 //private object OrderSQL {
 //  /* We require type StatusMeta to handle our ADT Status */
-//  implicit val status: Meta[OrderStatus] =
-//    Meta[String].imap(OrderStatus.withName)(_.entryName)
 //
 //  def select(orderId: Long): Query0[Orders] = sql"""
-//    SELECT ORDER_ID, SHIP_DATE, STATUS, COMPLETE, ID, USER_ID
+//    SELECT ID, USER_ID, RESTAURANT_ID, MEAL_IDS, TOTAL_PRICE
 //    FROM ORDERS
 //    WHERE ID = $orderId
 //  """.query[Orders]
 //
 //  def insert(order: Orders): Update0 = sql"""
-//    INSERT INTO ORDERS (PET_ID, SHIP_DATE, STATUS, COMPLETE, USER_ID)
-//    VALUES (${order.petId}, ${order.shipDate}, ${order.status}, ${order.complete}, ${order.userId.get})
+//    INSERT INTO ORDERS (USER_ID, RESTAURANT_ID, MEAL_IDS, TOTAL_PRICE)
+//    VALUES (${order.userId}, ${order.restaurantId}, ${order.mealIds}, ${order.totalPrice})
 //  """.update
 //
 //  def delete(orderId: Long): Update0 = sql"""
@@ -33,26 +29,21 @@
 //
 //class DoobieOrderRepository[F[_]: Sync](val xa: Transactor[F])
 //    extends OrderRepositoryAlgebra[F] {
-//  import OrderSQL._
 //
-//  def create(order: OrdersWithId): F[OrdersWithId] =
-//    insert(order)
-//      .withUniqueGeneratedKeys[Long]("ID")
-//      .map(id => order.copy(id = id.some))
-//      .transact(xa)
+//  override def create(order: Orders): F[Orders] = OrderSQL
+//    .insert(order)
+//    .withUniqueGeneratedKeys[Long]("ID")
+//    .map(id => order.copy(id = id.some))
+//    .transact(xa);
 //
-//  def get(orderId: Long): F[Option[OrdersWithId]] =
-//    OrderSQL.select(orderId).option.transact(xa)
+//  override def get(orderId: Long): F[Option[Orders]] = OrderSQL.select(orderId).option.transact(xa)
 //
-//  def delete(orderId: Long): F[Option[OrdersWithId]] =
-//    OptionT(get(orderId))
-//      .semiflatMap(order => OrderSQL.delete(orderId).run.transact(xa).as(order))
-//      .value
+//
 //}
 //
-//object DoobieMealRepository {
+//object DoobieOrderRepository {
 //  def apply[F[_]: Sync](
 //                         xa: Transactor[F],
-//                       ): DoobieMealRepository[F] =
-//    new DoobieMealRepository(xa)
+//                       ): DoobieOrderRepository[F] =
+//    new DoobieOrderRepository(xa)
 //}

@@ -1,7 +1,60 @@
 [debug] Created transactional ClassFileManager with tempDir = C:\Users\User\Downloads\evolution-games\untitled2\target\scala-2.13\classes.bak
 [debug] About to delete class files:
 [debug] We backup class files:
-[debug] Rolling back changes to class files.
-[debug] Removing generated classes:
-[debug] Restoring class files: 
+[debug] Registering generated classes:
+[debug] 	UserSQL$anon$generic$macro$30$1.class
+[debug] 	DoobieOrderHistoryRepository.class
+[debug] 	RestaurantSQL$anon$generic$macro$18$1.class
+[debug] 	DatabaseConfig$.class
+[debug] 	OrderHistorySql$anon$generic$macro$19$1.class
+[debug] 	OrderHistory$.class
+[debug] 	DoobieOwnerRepository$.class
+[debug] 	OrderHistorySql.class
+[debug] 	UserSQL$anon$generic$macro$61$1.class
+[debug] 	DoobieMealRepository$.class
+[debug] 	RegularUser.class
+[debug] 	Gender.class
+[debug] 	Restaurant.class
+[debug] 	DBTransactor.class
+[debug] 	OwnerSQL$anon$generic$macro$30$1.class
+[debug] 	MealSQL$.class
+[debug] 	UserSQL.class
+[debug] 	DatabaseConfig.class
+[debug] 	DoobieRestaurantRepository$.class
+[debug] 	OwnerSQL$anon$generic$macro$123$1.class
+[debug] 	DoobieOrderHistoryRepository$.class
+[debug] 	OrderStatus$.class
+[debug] 	OwnerSQL$anon$generic$macro$61$1.class
+[debug] 	UsersRepositoryAlgebra.class
+[debug] 	OwnerRepositoryAlgebra.class
+[debug] 	OrderStatus.class
+[debug] 	OwnerSQL.class
+[debug] 	Users.class
+[debug] 	DoobieMealRepository.class
+[debug] 	DoobieUserRepository$.class
+[debug] 	DBTransactor$.class
+[debug] 	DoobieRestaurantRepository.class
+[debug] 	OrderRepositoryAlgebra.class
+[debug] 	Owner$.class
+[debug] 	UserSQL$.class
+[debug] 	Restaurant$.class
+[debug] 	RegularUser$.class
+[debug] 	MealSQL.class
+[debug] 	DoobieOwnerRepository.class
+[debug] 	Meal$.class
+[debug] 	Gender$.class
+[debug] 	MealRepositoryAlgebra.class
+[debug] 	Orders.class
+[debug] 	RestaurantSQL$.class
+[debug] 	OwnerSQL$.class
+[debug] 	MealSQL$anon$generic$macro$22$1.class
+[debug] 	Orders$.class
+[debug] 	Owner.class
+[debug] 	RestaurantRepositoryAlgebra.class
+[debug] 	RestaurantSQL.class
+[debug] 	DoobieUserRepository.class
+[debug] 	OrderHistoryRepositoryAlgebra.class
+[debug] 	OrderHistorySql$.class
+[debug] 	OrderHistory.class
+[debug] 	Meal.class
 [debug] Removing the temporary directory used for backing up class files: C:\Users\User\Downloads\evolution-games\untitled2\target\scala-2.13\classes.bak

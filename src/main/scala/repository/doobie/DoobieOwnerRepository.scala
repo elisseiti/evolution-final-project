@@ -5,12 +5,16 @@ import algebras.OwnerRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import domain.entity.Owner
+import domain.entity.Gender.Gender
+import domain.entity.{Gender, Owner}
 import doobie._
 import doobie.implicits._
 import doobie.postgres.implicits._
 
 private object OwnerSQL {
+
+  implicit val StatusMeta: Meta[Gender] =
+    Meta[String].imap(Gender.withName)(_.toString)
 
   def insert(owner: Owner): Update0 = sql"""
     INSERT INTO OWNERS (USERNAME, NAME, SURNAME, BIRTHDAY, EMAIL, PASSWORD, GENDER)

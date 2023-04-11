@@ -7,7 +7,4 @@ trait OrderRepositoryAlgebra[F[_]] {
 
   def get(orderId: Long): F[Option[Orders]]
 
-  def delete(orderId: Long): F[Option[Orders]]
-
-  def update(orders: Orders): F[Orders]
 }
