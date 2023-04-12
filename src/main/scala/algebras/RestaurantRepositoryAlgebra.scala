@@ -1,6 +1,6 @@
 package algebras
 
-import domain.entity.Restaurant
+import entity.Restaurant
 
 trait RestaurantRepositoryAlgebra[F[_]] {
   def create(restaurant: Restaurant): F[Restaurant]

@@ -1,11 +1,11 @@
-package repository.doobie
+package repository
 
 import algebras.OrderRepositoryAlgebra
 import cats.effect.Sync
 import cats.implicits.catsSyntaxOptionId
-import domain.entity.Orders
 import doobie._
 import doobie.implicits._
+import entity.Orders
 
 private object OrderSQL {
   /* We require type StatusMeta to handle our ADT Status */

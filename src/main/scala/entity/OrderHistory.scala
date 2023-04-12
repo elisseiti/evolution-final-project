@@ -1,6 +1,6 @@
-package domain.entity
+package entity
 
-import domain.entity.OrderStatus.OrderStatus
+import OrderStatus.OrderStatus
 
 import java.time.Instant
 

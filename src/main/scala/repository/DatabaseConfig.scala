@@ -1,4 +1,4 @@
-package repository.doobie
+package repository
 
 object DatabaseConfig {
   val dbDriverName = "org.postgresql.Driver"

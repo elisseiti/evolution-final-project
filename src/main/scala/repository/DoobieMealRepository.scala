@@ -1,12 +1,12 @@
-package repository.doobie
+package repository
 
 import algebras.MealRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect.Sync
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import domain.entity.Meal
 import doobie._
 import doobie.implicits._
+import entity.Meal
 private object MealSQL {
   /* We require type StatusMeta to handle our ADT Status */
 

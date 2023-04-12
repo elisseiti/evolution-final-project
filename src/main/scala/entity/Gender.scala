@@ -1,4 +1,4 @@
-package domain.entity
+package entity
 
 object Gender extends Enumeration {
   type Gender = Value

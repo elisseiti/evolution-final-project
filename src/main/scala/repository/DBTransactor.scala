@@ -1,8 +1,8 @@
-package repository.doobie
+package repository
 
 import cats.effect.Async
 import doobie.Transactor
-import repository.doobie.DatabaseConfig.{dbDriverName, dbPwd, dbUrl, dbUser}
+import DatabaseConfig.{dbDriverName, dbPwd, dbUrl, dbUser}
 
 object DBTransactor {
 

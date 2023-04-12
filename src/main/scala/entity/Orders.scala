@@ -1,3 +1,3 @@
-package domain.entity
+package entity
 
 case class Orders(id: Option[Long] = None, userId: Long, restaurantId: Long, mealIds: Set[Long], totalPrice: Double)

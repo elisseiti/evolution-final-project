@@ -1,6 +1,6 @@
 package algebras
 
-import domain.entity.Owner
+import entity.Owner
 
 trait OwnerRepositoryAlgebra[F[_]] {
   def create(owner: Owner): F[Owner]

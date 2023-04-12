@@ -1,6 +1,6 @@
 package algebras
 
-import domain.entity.{RegularUser}
+import entity.RegularUser
 
 trait UsersRepositoryAlgebra[F[_]] {
   def create(user: RegularUser): F[RegularUser]

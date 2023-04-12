@@ -1,4 +1,4 @@
-package domain.entity
+package entity
 
 import java.time.LocalDate
 sealed trait Users

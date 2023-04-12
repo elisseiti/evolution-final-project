@@ -1,6 +1,6 @@
 package algebras
 
-import domain.entity.Orders
+import entity.Orders
 
 trait OrderRepositoryAlgebra[F[_]] {
   def create(order: Orders): F[Orders]

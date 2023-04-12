@@ -1,15 +1,15 @@
-package repository.doobie
-
+package repository
 
 import algebras.OwnerRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import domain.entity.Gender.Gender
-import domain.entity.{Gender, Owner}
+import entity.Gender.Gender
+import domain.entity.Owner
 import doobie._
 import doobie.implicits._
 import doobie.postgres.implicits._
+import entity.{Gender, Owner}
 
 private object OwnerSQL {
 

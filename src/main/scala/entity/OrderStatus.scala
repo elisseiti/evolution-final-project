@@ -1,4 +1,4 @@
-package domain.entity
+package entity
 
 object OrderStatus extends Enumeration {
   type OrderStatus = Value
