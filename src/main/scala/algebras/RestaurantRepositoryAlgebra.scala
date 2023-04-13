@@ -10,4 +10,6 @@ trait RestaurantRepositoryAlgebra[F[_]] {
   def delete(restaurantId: Long): F[Option[Restaurant]]
 
   def update(restaurant: Restaurant): F[Option[Restaurant]]
+
+  def getRestaurantsByOwnerId(id: Long): F[List[Restaurant]]
 }

@@ -31,6 +31,13 @@ private object MealSQL {
     WHERE ID = $id
   """.query
 
+
+  def selectMealsByRestaurantId(id: Long): Query0[Meal] = sql"""
+    SELECT ID,NAME, DESCRIPTION, PRICE, RESTAURANT_ID
+    FROM MEAL
+    WHERE RESTAURANT_ID = $id
+  """.query
+
   def delete(id: Long): Update0 = sql"""
     DELETE FROM MEAL WHERE ID = $id
   """.update
@@ -55,6 +62,9 @@ class DoobieMealRepository[F[_]: Sync](xa: Transactor[F]) extends MealRepository
   override def delete(id: Long): F[Option[Meal]] = OptionT(get(id))
     .semiflatMap(order => MealSQL.delete(id).run.transact(xa).as(order))
     .value
+
+  override def getMealsByRestaurantId(id: Long): F[List[Meal]] =
+    MealSQL.selectMealsByRestaurantId(id).to[List].transact(xa)
 }
 
 object DoobieMealRepository {

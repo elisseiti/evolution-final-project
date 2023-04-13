@@ -5,71 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac196339-b1c6-425a-99ab-1736ba70c67b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/Main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieOrderHistoryRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieOrderHistoryRepository.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieOwnerRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieOwnerRepository.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieUserRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieUserRepository.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/MealRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/OrderHistoryRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/OrderRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/OwnerRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/RestaurantRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/UsersRepositoryAlgebra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Gender$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Gender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Meal$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Meal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/OrderHistory$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/OrderHistory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/OrderStatus$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/OrderStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Orders$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Orders.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Owner$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Owner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/RegularUser$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/RegularUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Restaurant$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Restaurant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/domain/entity/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DBTransactor$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DBTransactor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DatabaseConfig$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DatabaseConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieMealRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieMealRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOrderHistoryRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOrderHistoryRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOrderRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOrderRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOwnerRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieOwnerRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieRestaurantRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieRestaurantRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieUserRepository$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/DoobieUserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/MealSQL$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/MealSQL$anon$generic$macro$22$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/MealSQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderHistorySql$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderHistorySql$anon$generic$macro$19$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderHistorySql.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderSQL$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderSQL$anon$generic$macro$22$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OrderSQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OwnerSQL$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OwnerSQL$anon$generic$macro$123$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OwnerSQL$anon$generic$macro$30$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OwnerSQL$anon$generic$macro$61$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/OwnerSQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/RestaurantSQL$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/RestaurantSQL$anon$generic$macro$18$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/RestaurantSQL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/UserSQL$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/UserSQL$anon$generic$macro$30$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/UserSQL$anon$generic$macro$61$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/doobie/UserSQL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/algebras/MealRepositoryAlgebra.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/algebras/MealRepositoryAlgebra.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/algebras/RestaurantRepositoryAlgebra.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/algebras/RestaurantRepositoryAlgebra.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieMealRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieMealRepository.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieRestaurantRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieRestaurantRepository.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/MealRepositoryAlgebra.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/MealRepositoryAlgebra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/RestaurantRepositoryAlgebra.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/RestaurantRepositoryAlgebra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +90,7 @@
       <workItem from="1681159603294" duration="3518000" />
       <workItem from="1681236161704" duration="2722000" />
       <workItem from="1681247165348" duration="9354000" />
-      <workItem from="1681317682727" duration="2922000" />
+      <workItem from="1681317682727" duration="4864000" />
     </task>
     <servers />
   </component>

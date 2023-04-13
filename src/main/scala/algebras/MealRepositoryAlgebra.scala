@@ -9,5 +9,7 @@ trait MealRepositoryAlgebra[F[_]] {
 
   def get(id: Long): F[Option[Meal]]
 
+  def getMealsByRestaurantId(id: Long): F[List[Meal]]
+
   def delete(id: Long): F[Option[Meal]]
 }

@@ -35,6 +35,11 @@ private object RestaurantSQL {
     DELETE FROM RESTAURANT WHERE ID = $id
   """.update
 
+  def selectRestaurantsByOwnerId(id: Long): Query0[Restaurant] = sql"""
+    SELECT ID, NAME, DESCRIPTION, OWNER_ID
+    FROM RESTAURANT
+    WHERE OWNER_ID = $id
+  """.query
 }
 
 class DoobieRestaurantRepository[F[_]: Sync](xa: Transactor[F]) extends RestaurantRepositoryAlgebra[F] {
@@ -56,6 +61,8 @@ class DoobieRestaurantRepository[F[_]: Sync](xa: Transactor[F]) extends Restaura
     .value
     .transact(xa)
 
+  override def getRestaurantsByOwnerId(id: Long): F[List[Restaurant]] = RestaurantSQL
+    .selectRestaurantsByOwnerId(id).to[List].transact(xa)
 }
 
 
