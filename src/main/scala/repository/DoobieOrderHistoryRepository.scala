@@ -4,12 +4,12 @@ import algebras.OrderHistoryRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import entity.OrderStatus.OrderStatus
-import domain.entity.OrderStatus
 import doobie._
 import doobie.implicits._
-import doobie.postgres.implicits._
 import entity.{OrderHistory, OrderStatus}
+import entity.OrderStatus.OrderStatus
+import doobie.postgres.implicits._
+
 
 private object OrderHistorySql {
   implicit val StatusMeta: Meta[OrderStatus] =

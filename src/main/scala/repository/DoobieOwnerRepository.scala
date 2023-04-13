@@ -4,12 +4,12 @@ import algebras.OwnerRepositoryAlgebra
 import cats.data.OptionT
 import cats.effect._
 import cats.implicits.{catsSyntaxOptionId, toFunctorOps}
-import entity.Gender.Gender
-import domain.entity.Owner
 import doobie._
 import doobie.implicits._
-import doobie.postgres.implicits._
+import entity.Gender.Gender
 import entity.{Gender, Owner}
+import doobie.postgres.implicits._
+
 
 private object OwnerSQL {
 
