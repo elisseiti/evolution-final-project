@@ -40,6 +40,11 @@ private object RestaurantSQL {
     FROM RESTAURANT
     WHERE OWNER_ID = $id
   """.query
+
+  def selectAllRestaurants(): Query0[Restaurant] = sql"""
+    SELECT ID, NAME, DESCRIPTION, OWNER_ID
+    FROM RESTAURANT
+  """.query
 }
 
 class DoobieRestaurantRepository[F[_]: Sync](xa: Transactor[F]) extends RestaurantRepositoryAlgebra[F] {
@@ -63,6 +68,9 @@ class DoobieRestaurantRepository[F[_]: Sync](xa: Transactor[F]) extends Restaura
 
   override def getRestaurantsByOwnerId(id: Long): F[List[Restaurant]] = RestaurantSQL
     .selectRestaurantsByOwnerId(id).to[List].transact(xa)
+
+  override def getRestaurants(): F[List[Restaurant]] = RestaurantSQL
+    .selectAllRestaurants().to[List].transact(xa)
 }
 
 

@@ -8,7 +8,6 @@ import doobie._
 import doobie.implicits._
 import entity.Gender.Gender
 import entity.{Gender, RegularUser}
-
 import doobie.postgres.implicits._
 
 private object UserSQL {

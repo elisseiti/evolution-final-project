@@ -5,21 +5,92 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac196339-b1c6-425a-99ab-1736ba70c67b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_chuusai_shapeless_2_13_2_3_10_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_circe_circe_core_2_13_0_14_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_circe_circe_generic_2_13_0_14_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_circe_circe_jawn_2_13_0_14_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_circe_circe_numbers_2_13_0_14_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_http4s_http4s_circe_2_13_1_0_0_M39_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_http4s_http4s_jawn_2_13_1_0_0_M39_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_jawn_fs2_2_13_2_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_jawn_parser_2_13_1_4_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/controller/MealController.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/controller/OrderController.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/controller/OwnerController.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/controller/RestaurantController.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/controller/UserController.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/entity/error/MealError.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/entity/error/OrderError.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/entity/error/OwnerError.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/entity/error/RestaurantErrors.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/entity/error/UserError.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/service/MealService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/service/RestaurantService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_chuusai_shapeless_2_13_2_3_7_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/untitled2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/untitled2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/algebras/MealRepositoryAlgebra.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/algebras/MealRepositoryAlgebra.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2215a307e4607177ab80$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2215a307e4607177ab80.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$2215a307e4607177ab80.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$3b18a9ec8b1b17a7e61f$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$3b18a9ec8b1b17a7e61f.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$3b18a9ec8b1b17a7e61f.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4b4b710d15d098d9eac5$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4b4b710d15d098d9eac5.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4b4b710d15d098d9eac5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c81643422ad72749e2b0$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c81643422ad72749e2b0.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c81643422ad72749e2b0.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$cf0069a3ae11d0c5df8a$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$cf0069a3ae11d0c5df8a.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$cf0069a3ae11d0c5df8a.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/algebras/RestaurantRepositoryAlgebra.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/algebras/RestaurantRepositoryAlgebra.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieMealRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieMealRepository.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieRestaurantRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieRestaurantRepository.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/MealRepositoryAlgebra.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/MealRepositoryAlgebra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieUserRepository.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/DoobieUserRepository.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/service/RegularUserService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/service/UserService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Main$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Main$$anonfun$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Main$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Main$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/RestaurantRepositoryAlgebra.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/algebras/RestaurantRepositoryAlgebra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieMealRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieRestaurantRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieUserRepository$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieUserRepository$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/DoobieUserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$anon$generic$macro$22$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/MealSQL$anon$generic$macro$22$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderHistorySql$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderHistorySql$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderHistorySql$anon$generic$macro$19$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OrderSQL$anon$generic$macro$22$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OwnerSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OwnerSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OwnerSQL$anon$generic$macro$123$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OwnerSQL$anon$generic$macro$30$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/OwnerSQL$anon$generic$macro$61$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$anon$generic$macro$18$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL$anon$generic$macro$18$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/RestaurantSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/UserSQL$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/repository/UserSQL$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/UserSQL$anon$generic$macro$30$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/repository/UserSQL$anon$generic$macro$61$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/service/RegularUserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/input_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +108,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -48,6 +122,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -91,6 +166,10 @@
       <workItem from="1681236161704" duration="2722000" />
       <workItem from="1681247165348" duration="9354000" />
       <workItem from="1681317682727" duration="4864000" />
+      <workItem from="1681843574637" duration="119000" />
+      <workItem from="1681905786139" duration="16791000" />
+      <workItem from="1682024524691" duration="612000" />
+      <workItem from="1682098978383" duration="4398000" />
     </task>
     <servers />
   </component>
