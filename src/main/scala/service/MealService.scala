@@ -1,8 +1,10 @@
 package service
 
 import cats.effect.IO
+import cats.implicits.{catsSyntaxApplicativeId, catsSyntaxEitherId}
 import entity.Meal
 import entity.error.MealError
+import repository.DoobieMealRepository
 
 trait MealServiceTrait {
   def create(meal: Meal): IO[Either[MealError, Meal]]
@@ -12,9 +14,15 @@ trait MealServiceTrait {
   def getMealsByRestaurantId(id: Option[Long]): IO[Either[MealError, List[Meal]]]
 }
 
-class MealService extends MealServiceTrait{
-  override def create(meal: Meal): IO[Either[MealError, Meal]] = ???
+class PetService[F[_]](
+                        repository: DoobieMealRepository[F],
+                      ) extends MealServiceTrait{
 
+
+  override def create(meal: Meal): IO[Either[MealError, Meal]] = {
+    MealError.MealAlreadyExists.asLeft.pure
+    else repository.create(meal).pure[IO]
+  }
   override def getMealById(id: Option[Long]): IO[Option[Meal]] = ???
 
   override def update(meal: Meal): IO[Option[Meal]] = ???
