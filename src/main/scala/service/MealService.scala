@@ -69,7 +69,7 @@ class MealService [F[_]: Monad](
 
 object MealService {
   object MealService {
-    def apply[F[_]](
+    def apply[F[_]: Monad](
                      mealRepository: MealRepositoryAlgebra[F],
                      restaurantRepository: RestaurantRepositoryAlgebra[F],
                      restaurantRepositoryAlgebra: RestaurantValidationAlgebra[F],
