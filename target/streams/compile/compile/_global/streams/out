@@ -1,2 +1,9 @@
 [debug] Acquiring lock on file C:\Users\User\Downloads\evolution-games\untitled2\project\target\.sbt-compilation-infos\untitled2-compile\.sbt-idea-lock ...
+[info] C:\Users\User\Downloads\evolution-games\untitled2\src\main\scala\controller\MealController.scala:1:1: 
+[info] Found names but no class, trait or object is defined in the compilation unit.
+[info] The incremental compiler cannot record the dependency information in such case.
+[info] Some errors like unused import referring to a non-existent class might not be reported.
+[info]     
+[info] package controller
+[info] ^
 [debug] Releasing lock on file C:\Users\User\Downloads\evolution-games\untitled2\project\target\.sbt-compilation-infos\untitled2-compile\.sbt-idea-lock.
