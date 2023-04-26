@@ -1,6 +1,7 @@
-package repository
+package repository.validation
 
-import algebras.{RestaurantRepositoryAlgebra, RestaurantValidationAlgebra}
+import algebras.RestaurantRepositoryAlgebra
+import algebras.validation.RestaurantValidationAlgebra
 import cats.Applicative
 import cats.syntax.all._
 import entity.error.Errors.{RestaurantAlreadyExistsError, RestaurantDoesNotExist}

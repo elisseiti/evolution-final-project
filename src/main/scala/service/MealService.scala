@@ -1,6 +1,7 @@
 package service
 
-import algebras.{MealRepositoryAlgebra, RestaurantRepositoryAlgebra, RestaurantValidationAlgebra}
+import algebras.validation.{MealValidationAlgebra, RestaurantValidationAlgebra}
+import algebras.{MealRepositoryAlgebra, RestaurantRepositoryAlgebra}
 import cats.Monad
 import entity.Meal
 import entity.error.Errors
@@ -17,7 +18,8 @@ trait MealServiceTrait[F[_]] {
 class MealService [F[_]: Monad](
                           mealRepository: MealRepositoryAlgebra[F],
                           restaurantRepository: RestaurantRepositoryAlgebra[F],
-                          restaurantValidationAlgebra: RestaurantValidationAlgebra[F])
+                          restaurantValidationAlgebra: RestaurantValidationAlgebra[F],
+                          mealValidationAlgebra: MealValidationAlgebra[F])
   extends MealServiceTrait[F]{
 
 
@@ -35,11 +37,15 @@ class MealService [F[_]: Monad](
 //      saved <- EitherT.liftF(repository.create(pet))
 //    } yield saved
 
-  def getMeal(id: String): F[Meal] = ???
 
   def updateMeal(dummmyMeal: Meal): F[Meal] = ???
 
   override def create(meal: Meal): F[Either[Errors, Meal]] = ???
+
+  //  for {
+//    _ <- restaurantValidationAlgebra.doesNotExist(Some(meal.restaurantId))
+//    saved <- Right(mealRepository.create(meal))
+//  } yield saved
 //    val exists: F[Boolean] =
 //      restaurantRepository.get(meal.restaurantId).map {
 //          case Some(value) => true
@@ -60,6 +66,12 @@ class MealService [F[_]: Monad](
 
   override def getMealById(id: Option[Long]): F[Option[Meal]] = ???
 
+//    for {
+//    _ <- mealValidationAlgebra.exists(id)
+//    saved <- mealRepository.get(id)
+//  } yield saved
+
+
   override def update(meal: Meal): F[Option[Meal]] = ???
 
   override def delete(id: Option[Long]): F[Either[Errors, Meal]] = ???
@@ -73,7 +85,8 @@ object MealService {
                      mealRepository: MealRepositoryAlgebra[F],
                      restaurantRepository: RestaurantRepositoryAlgebra[F],
                      restaurantRepositoryAlgebra: RestaurantValidationAlgebra[F],
-                   ): MealService[F] =
-      new MealService[F](mealRepository, restaurantRepository, restaurantRepositoryAlgebra)
+                     mealValidationAlgebra: MealValidationAlgebra[F]):
+    MealService[F] =
+      new MealService[F](mealRepository, restaurantRepository, restaurantRepositoryAlgebra, mealValidationAlgebra)
   }
 }

@@ -2,12 +2,14 @@
 [debug] About to delete class files:
 [debug] We backup class files:
 [debug] Registering generated classes:
+[debug] 	DoobieMealValidator.class
 [debug] 	DoobieUserRepository.class
 [debug] 	DBTransactor$.class
 [debug] 	DoobieRestaurantRepository.class
 [debug] 	OwnerSQL$anon$generic$macro$187$1.class
 [debug] 	UserSQL.class
 [debug] 	MealService.class
+[debug] 	Errors$MealAlreadyExistsError$.class
 [debug] 	OrderHistorySql.class
 [debug] 	Gender.class
 [debug] 	OwnerSQL$anon$generic$macro$46$1.class
@@ -20,10 +22,10 @@
 [debug] 	OrderHistory$.class
 [debug] 	MealSQL$.class
 [debug] 	OwnerSQL$anon$generic$macro$93$1.class
-[debug] 	RestaurantValidationAlgebra.class
 [debug] 	Orders.class
 [debug] 	OrderHistorySql$.class
 [debug] 	UserSQL$anon$generic$macro$93$1.class
+[debug] 	Errors$RestaurantAlreadyExistsError.class
 [debug] 	Owner$.class
 [debug] 	Users.class
 [debug] 	Errors$.class
@@ -33,9 +35,12 @@
 [debug] 	Errors.class
 [debug] 	Gender$.class
 [debug] 	RestaurantSQL.class
+[debug] 	DoobieRestaurantValidator.class
 [debug] 	MealService$.class
+[debug] 	Errors$MealDoesNotExist$.class
 [debug] 	RestaurantSQL$anon$generic$macro$26$3.class
 [debug] 	OrderSQL$anon$generic$macro$32$1.class
+[debug] 	Errors$MealAlreadyExistsError.class
 [debug] 	Meal$.class
 [debug] 	DoobieOwnerRepository.class
 [debug] 	Main.class
@@ -44,7 +49,7 @@
 [debug] 	UsersRepositoryAlgebra.class
 [debug] 	DatabaseConfig$.class
 [debug] 	RestaurantSQL$anon$generic$macro$26$1.class
-[debug] 	DoobieRestaurantValidator.class
+[debug] 	RestaurantValidationAlgebra.class
 [debug] 	RegularUser.class
 [debug] 	OrderHistory.class
 [debug] 	DoobieOrderRepository$.class
@@ -57,15 +62,17 @@
 [debug] 	DBTransactor.class
 [debug] 	RestaurantService.class
 [debug] 	OwnerSQL$.class
+[debug] 	MealValidationAlgebra.class
 [debug] 	Main$$anonfun$1.class
 [debug] 	OrderHistorySql$anon$generic$macro$27$1.class
+[debug] 	MealService$MealService$.class
 [debug] 	MealServiceTrait.class
-[debug] 	Errors$MealAlreadyExists$.class
 [debug] 	DoobieMealRepository$.class
 [debug] 	OrderSQL.class
 [debug] 	DoobieOwnerRepository$.class
 [debug] 	DoobieOrderHistoryRepository.class
 [debug] 	MealSQL.class
+[debug] 	DoobieRestaurantValidator$.class
 [debug] 	DatabaseConfig.class
 [debug] 	OrderRepositoryAlgebra.class
 [debug] 	OrderSQL$.class
@@ -79,7 +86,9 @@
 [debug] 	UserService.class
 [debug] 	OwnerSQL.class
 [debug] 	RestaurantServiceTrait.class
+[debug] 	Errors$RestaurantAlreadyExistsError$.class
 [debug] 	RestaurantRepositoryAlgebra.class
 [debug] 	OrderHistoryRepositoryAlgebra.class
 [debug] 	RegularUser$.class
+[debug] 	DoobieMealValidator$.class
 [debug] Removing the temporary directory used for backing up class files: C:\Users\User\Downloads\evolution-games\untitled2\target\scala-2.13\classes.bak
