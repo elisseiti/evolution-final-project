@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac196339-b1c6-425a-99ab-1736ba70c67b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/algebras/validation/MealValidationAlgebra.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/algebras/validation/RestaurantValidationAlgebra.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/repository/validation/DoobieMealValidator.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/algebras/RestaurantValidationAlgebra.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/entity/error/Errors.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/entity/error/Errors.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/repository/DoobieRestaurantValidator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/repository/validation/DoobieRestaurantValidator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/service/MealService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/service/MealService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/service/RestaurantService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/service/RestaurantService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/zinc/inc_compile_2.13.zip" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/zinc/inc_compile_2.13.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,5 +117,8 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
