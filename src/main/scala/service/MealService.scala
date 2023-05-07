@@ -4,15 +4,15 @@ import algebras.validation.{MealValidationAlgebra, RestaurantValidationAlgebra}
 import algebras.{MealRepositoryAlgebra, RestaurantRepositoryAlgebra}
 import cats.Monad
 import entity.Meal
-import entity.error.Errors
+import entity.error.ValidationError
 
 
 trait MealServiceTrait[F[_]] {
-  def create(meal: Meal): F[Either[Errors, Meal]]
+  def create(meal: Meal): F[Either[ValidationError, Meal]]
   def getMealById(id: Option[Long]): F[Option[Meal]]
   def update(meal: Meal): F[Option[Meal]]
-  def delete(id: Option[Long]): F[Either[Errors, Meal]]
-  def getMealsByRestaurantId(id: Option[Long]): F[Either[Errors, List[Meal]]]
+  def delete(id: Option[Long]): F[Either[ValidationError, Meal]]
+  def getMealsByRestaurantId(id: Option[Long]): F[Either[ValidationError, List[Meal]]]
 }
 
 class MealService [F[_]: Monad](
@@ -22,46 +22,10 @@ class MealService [F[_]: Monad](
                           mealValidationAlgebra: MealValidationAlgebra[F])
   extends MealServiceTrait[F]{
 
-
-//  override def create(meal: Meal): F[Either[Errors,[Meal]]] = {
-//    if (restaurantRepository.get(meal.restaurantId)) Errors.MealAlreadyExists.asLeft.pure[IO]
-//    else mealRepository.create(meal).asRight.pure[IO]
-//
-//    if (meal.restaurantId == 1) Errors.MealAlreadyExists.asLeft.pure[IO]
-//    else mealRepository.create(meal).asRight.pure[IO]
-//  }
-//
-//  override def create(meal: Meal): IO[Either[Errors, Meal]] =
-//    for {
-//      _ <- restaurantValidationAlgebra.exists(meal.restaurantId)
-//      saved <- EitherT.liftF(repository.create(pet))
-//    } yield saved
-
-
   def updateMeal(dummmyMeal: Meal): F[Meal] = ???
 
-  override def create(meal: Meal): F[Either[Errors, Meal]] = ???
+  override def create(meal: Meal): F[Either[ValidationError, Meal]] = ???
 
-  //  for {
-//    _ <- restaurantValidationAlgebra.doesNotExist(Some(meal.restaurantId))
-//    saved <- Right(mealRepository.create(meal))
-//  } yield saved
-//    val exists: F[Boolean] =
-//      restaurantRepository.get(meal.restaurantId).map {
-//          case Some(value) => true
-//          case None => false
-//      }
-
-//    val updatedMeal: F[Meal] =
-//      getMeal(id = "42").flatMap { meal =>
-//        updateMeal(meal)
-//      }
-
-//    val updatedMealFor: F[Meal] =
-//      for {
-//        meal <- getMeal(id = "42")
-//        updatedMeal <- updateMeal(meal)
-//      } yield updatedMeal
 
 
   override def getMealById(id: Option[Long]): F[Option[Meal]] = ???
@@ -74,9 +38,9 @@ class MealService [F[_]: Monad](
 
   override def update(meal: Meal): F[Option[Meal]] = ???
 
-  override def delete(id: Option[Long]): F[Either[Errors, Meal]] = ???
+  override def delete(id: Option[Long]): F[Either[ValidationError, Meal]] = ???
 
-  override def getMealsByRestaurantId(id: Option[Long]): F[Either[Errors, List[Meal]]] = ???
+  override def getMealsByRestaurantId(id: Option[Long]): F[Either[ValidationError, List[Meal]]] = ???
 }
 
 object MealService {
