@@ -8,7 +8,7 @@ lazy val doobieVersion = "1.0.0-RC1"
 lazy val catsVersion = "3.4.8"
 lazy val doobiePostgres = "1.0.0-RC1"
 lazy val http4sVersion = "1.0.0-M39"
-lazy val circeVersion = "0.14.3"
+lazy val circeVersion = "0.14.5"
 lazy val circeDerivationVersion = "0.13.0-M5"
 
 
